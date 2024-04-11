@@ -1,26 +1,22 @@
 public class MultiThreading {
     public static void main(String[] args) {
-        int n = 42; // ваш номер варіанту
+        int n = 2;
         long N = 100_000_000L;
 
-        // Метод 1: за допомогою формули
         long sumByFormula = sumByFormula(n, N);
         System.out.println("Сума за допомогою формули: " + sumByFormula);
 
-        // Метод 2: використання циклу в одному потоці
         long sumByLoopSingleThread = sumByLoopSingleThread(n, N);
-        System.out.println("Сума за допомогою циклу в одному потоці: " + sumByLoopSingleThread);
+        System.out.println("Сума циклу в одному потоці: " + sumByLoopSingleThread);
 
-        // Методи 3-7: використання циклу в кількох потоках
         int[] threadCounts = {2, 4, 8, 16, 32};
         for (int k : threadCounts) {
             long sumByLoopMultipleThreads = sumByLoopMultipleThreads(n, N, k);
-            System.out.println("Сума за допомогою циклу в " + k + " потоках: " + sumByLoopMultipleThreads);
+            System.out.println("Сума циклу в " + k + " потоках: " + sumByLoopMultipleThreads);
         }
     }
 
     public static long sumByFormula(int n, long N) {
-        // Формула суми арифметичної прогресії: S = (n/2) * (2*a + (n-1)*d)
         return (N / 2) * (2 * n + (N - 1) * n);
     }
 
