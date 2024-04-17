@@ -3,16 +3,27 @@ public class MultiThreading {
         int n = 2;
         long N = 100_000_000L;
 
-        long sumByFormula = sumByFormula(n, N);
-        System.out.println("Сума за допомогою формули: " + sumByFormula);
+        long startTime, endTime;
 
+        startTime = System.currentTimeMillis();
+        long sumByFormula = sumByFormula(n, N);
+        endTime = System.currentTimeMillis();
+        System.out.println("Сума за допомогою формули: " + sumByFormula);
+        System.out.println("Час мс: " + (endTime - startTime));
+
+        startTime = System.currentTimeMillis();
         long sumByLoopSingleThread = sumByLoopSingleThread(n, N);
+        endTime = System.currentTimeMillis();
         System.out.println("Сума циклу в одному потоці: " + sumByLoopSingleThread);
+        System.out.println("Час мс: " + (endTime - startTime));
 
         int[] threadCounts = {2, 4, 8, 16, 32};
         for (int k : threadCounts) {
+            startTime = System.currentTimeMillis();
             long sumByLoopMultipleThreads = sumByLoopMultipleThreads(n, N, k);
+            endTime = System.currentTimeMillis();
             System.out.println("Сума циклу в " + k + " потоках: " + sumByLoopMultipleThreads);
+            System.out.println("Час мс: " + (endTime - startTime));
         }
     }
 
